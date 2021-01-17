@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.prototype.urbandictionary.presentation.home.DefinitionViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:padding="@dimen/_8sdp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/_14sdp">
+
+                <TextView
+                    android:id="@+id/tv_word"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.wordField}"
+                    android:textColor="@color/royal_blue"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="wtf" />
+
+                <TextView
+                    android:id="@+id/tv_definition"
+                    bracketlessText="@{viewModel.definitionField}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:textColor="@color/outer_space"
+                    app:layout_constraintTop_toBottomOf="@id/tv_word"
+                    tools:text="Generally stands for 'What the fuck'.  Most people use a [question mark] afterwards to get the point through.  Rather than using the same term for the other 'w's, who, when, where, and why, it makes more sense to actually state the word and follow it with 'tf'\r\n\r\n[Capitalization] doesn't really matter.\r\nThis term can also be likened to 'What the shit?' which is more comical and has a [tantamount] meaning." />
+
+                <TextView
+                    android:id="@+id/tv_example"
+                    bracketlessText="@{viewModel.exampleField}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:textColor="@color/outer_space"
+                    android:textStyle="italic"
+                    app:layout_constraintTop_toBottomOf="@id/tv_definition"
+                    tools:text="[WTF]?\r\n[WhoTH]?\r\nWhenTF?\r\n\r\n[WTS]?" />
+
+                <ImageView
+                    android:id="@+id/iv_thumb_up"
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:src="@drawable/ic_thumb_up"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_example" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_14sdp"
+                    android:text="@{viewModel.thumbsUpField}"
+                    android:textColor="@color/mine_shaft"
+                    android:textSize="12sp"
+                    tools:text="7744"
+                    android:gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_thumb_up"
+                    app:layout_constraintEnd_toStartOf="@id/iv_thumb_up"
+                    app:layout_constraintTop_toTopOf="@id/iv_thumb_up" />
+
+                <ImageView
+                    android:id="@+id/iv_thumb_down"
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:src="@drawable/ic_thumb_down"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_thumb_up" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_14sdp"
+                    android:text="@{viewModel.thumbsDownField}"
+                    android:textColor="@color/mine_shaft"
+                    android:textSize="12sp"
+                    tools:text="1393"
+                    android:gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_thumb_down"
+                    app:layout_constraintEnd_toStartOf="@id/iv_thumb_down"
+                    app:layout_constraintTop_toTopOf="@id/iv_thumb_down" />
+
+                <TextView
+                    android:id="@+id/tv_by"
+                    app:layout_goneMarginTop="@dimen/_2sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/item_word_by"
+                    android:textColor="@color/mine_shaft"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tv_date" />
+
+                <TextView
+                    android:id="@+id/tv_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:text="@{viewModel.authorField}"
+                    android:textColor="@color/royal_blue"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/tv_by"
+                    app:layout_constraintBottom_toTopOf="@id/tv_date"
+                    tools:text="chalupamonk" />
+
+                <TextView
+                    android:id="@+id/tv_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/item_word_on"
+                    android:textColor="@color/mine_shaft"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_date" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.dateField}"
+                    android:textColor="@color/mine_shaft"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_thumb_down"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/tv_on"
+                    tools:text="March 03, 2003" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+</layout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mirage">#1d2438</color>
+    <color name="mirage_dark">#171c2c</color>
+    <color name="violet_red">#f7476f</color>
+    <color name="violet_red_dark">#c53858</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bright_gray">#33394b</color>
+    <color name="shuttle_gray">#606573</color>
+    <color name="mischka">#e1e0e3</color>
+    <color name="royal_blue">#274ee6</color>
+    <color name="outer_space">#2C353C</color>
+    <color name="mine_shaft">#333333</color>
+
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Urban Dictionary</string>
+
+    <string name="request_failed">An error has occurred while procesing your request, please try again</string>
+    <string name="home_empty_state_text">Search any word to start</string>
+    <string name="home_no_results_text">Sorry, we couldn\'t find anything related</string>
+    <string name="home_search_hint">Type any word…</string>
+    <string name="home_sorting_mode">Sorting mode:</string>
+    <string name="item_word_by">by</string>
+    <string name="item_word_on">on</string>
+    <string name="sorting_mode_normal">Normal</string>
+    <string name="sorting_mode_thumbs_up">Thumbs Up</string>
+    <string name="sorting_mode_thumbs_down">Thumbs Down</string>
+
+</resources>

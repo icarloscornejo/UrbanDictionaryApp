@@ -1,0 +1,61 @@
+buildscript {
+    apply from: 'properties.gradle'
+
+    repositories {
+        google()
+        jcenter()
+        maven { url appRepositories.maven }
+        maven { url appRepositories.jitpack }
+    }
+
+    dependencies {
+        classpath appClasspath.gradle
+        classpath appClasspath.kotlin_gradle_plugin
+        classpath appClasspath.navigation_safe_args
+    }
+}
+
+plugins {
+    id "org.jlleitschuh.gradle.ktlint" version "9.4.1"
+    id "io.gitlab.arturbosch.detekt" version "1.15.0"
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url appRepositories.maven
+        }
+    }
+}
+
+apply from: 'properties.gradle'
+
+ktlint {
+    debug = true
+    verbose = true
+    android = false
+}
+
+detekt {
+    failFast = true
+    buildUponDefaultConfig = true
+    reports {
+        html.enabled = true
+        xml.enabled = true
+        txt.enabled = true
+    }
+}
+// Groovy DSL
+tasks.detekt.jvmTarget = app.java_version
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+task localCheck(type: GradleBuild) {
+    tasks = ['ktlintFormat', 'ktlintCheck', 'detekt']
+    group = "verification"
+    description = "Runs a local check before doing a manual unit test run."
+}

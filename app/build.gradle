@@ -1,0 +1,112 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion app.compile_sdk_version
+    buildToolsVersion app.build_tools_version
+
+    defaultConfig {
+        applicationId app.id
+        minSdkVersion app.min_sdk_version
+        targetSdkVersion app.target_sdk_version
+        versionCode app.version_code
+        versionName app.version_name
+
+        testInstrumentationRunner "com.prototype.urbandictionary.test.KoinTestRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    compileOptions {
+        sourceCompatibility app.java_version
+        targetCompatibility app.java_version
+    }
+    kotlinOptions {
+        jvmTarget = app.java_version
+    }
+    testOptions {
+        animationsDisabled = true
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+
+    // Modules
+    implementation              project(":domain")
+    implementation              project(":data")
+
+    // Core
+    implementation              core.kotlin_stdlib
+    implementation              core.core_ktx
+    implementation              core.coroutines
+    implementation              core.koin
+    implementation              core.koin_viewmodel
+
+    // UI
+    implementation              ui.appcompat
+    implementation              ui.constraintlayout
+    implementation              ui.recyclerview
+    implementation              ui.material
+    implementation              ui.sdp
+    implementation              ui.lottie
+
+    // Testing
+    implementation              implementation.runner
+    implementation              implementation.rules
+    implementation              implementation.test_core
+    debugImplementation(testImplementation.fragment_test) {
+        exclude group: 'androidx.test', module: 'monitor'
+    }
+    testImplementation          testImplementation.runner
+    testImplementation          testImplementation.rules
+    testImplementation          testImplementation.junit
+    testImplementation          testImplementation.junit_ext
+    testImplementation          testImplementation.robolectric
+    testImplementation          testImplementation.test_core
+    testImplementation          testImplementation.mockito_core
+    testImplementation          testImplementation.mockito_inline
+    testImplementation          testImplementation.core_testing
+    testImplementation          testImplementation.koin_test
+    androidTestImplementation   androidTestImplementation.runner
+    androidTestImplementation   androidTestImplementation.rules
+    androidTestImplementation   androidTestImplementation.junit_ext
+    androidTestImplementation   androidTestImplementation.espresso_core
+    androidTestImplementation   androidTestImplementation.mockk
+    androidTestImplementation   androidTestImplementation.koin_test
+
+    // Room
+    implementation              room.room_runtime
+    implementation              room.room_ktx
+    kapt                        room.room_compiler
+
+    // Lifecycle
+    implementation              lifecycle.viewmodel
+    implementation              lifecycle.livedata
+    kapt                        lifecycle.compiler
+
+    // Networking
+    implementation              networking.retrofit
+    implementation              networking.converter_gson
+    implementation              networking.logging_interceptor
+    implementation              networking.gson
+    implementation              networking.glide
+    kapt                        networking.glide_compiler
+
+    // Navigation
+    implementation              navigation.ui_ktx
+    implementation              navigation.fragment_ktx
+}
